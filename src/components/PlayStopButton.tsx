@@ -1,6 +1,6 @@
 "use client";
 import { Play, Square } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 interface Props {
   onPlayStopChanged: (isPlaying: boolean) => void;
@@ -8,6 +8,10 @@ interface Props {
 
 export default function PlayStopButton({ onPlayStopChanged }: Props) {
   const [isPlaying, setIsPlaying] = useState(false);
+
+  useEffect(() => {
+    playButtonClickHandler(); // Chamada inicial ao montar o componente
+  }, []); // Array vazio para garantir que só seja chamado uma vez
 
   const playButtonClickHandler = () => {
     const newIsPlayingState = !isPlaying;
